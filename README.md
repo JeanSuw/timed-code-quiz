@@ -5,7 +5,8 @@ A timed coding quiz with multiple-choice questions
 A coding assessments for interview process. It's a multiple choices type. For this update, it only has three problems from Quizlet Javascript. You are welcome to check them in Acknowledgement section. 
 
 ## Links
-
+* [Time Code Quiz Repo](https://github.com/JeanSuw/timed-code-quiz)
+* [Time Code Quiz Website]()
 
 ## Installation
 This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code.
