@@ -20,4 +20,26 @@ const problems = [
 // Score recorded variables
 var correctCounts = 0, problemIndex = 0;
 
-// 
+// Reference Elements
+
+var maxTime, choiceA, choiceB, choiceC, choiceD, currentAnswer;
+
+maxTime = 90;
+choiceA = document.getElementById("buttonA");
+choiceB = document.getElementById("buttonB");
+choiceC = document.getElementById("buttonC");
+choiceD = document.getElementById("buttonD");
+
+// Start Quiz function and time the user
+
+
+// Show the current question and choices on the screen
+
+// Check answers by showing if the user choose correct or incorrect answers
+
+
+
+// Quiz event
+
+// Click Start button
+// Click any buttons
