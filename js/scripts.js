@@ -94,6 +94,7 @@ function isCorrect(){
 
 }
 
+// These clicker function is used to check users when they click collectly on one of the choices below
 function clickA(){
     isCorrect(0);
 }
@@ -110,7 +111,24 @@ function clickD(){
     isCorrect(3);
 }
 
+function endGame(){
+    startDiv.style.display = "none";
+    // Get rid of questions and muliple choice page all together
+    questionDiv.style.display = "none";
+    // Display the summary of the final score
+    
+}
 
+// Storing user's initial and highscore to local storage
+function recordScores(event){
+    event.preventDefault();
+    // alert user when they did not add initials
+    
+    // Display the highscore
+
+
+
+}
 
 // Quiz event
 
