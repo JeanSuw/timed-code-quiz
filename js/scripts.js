@@ -22,16 +22,42 @@ var correctCounts = 0, problemIndex = 0;
 
 // Reference Elements
 
-var maxTime, choiceA, choiceB, choiceC, choiceD, currentAnswer;
+var maxTime, timeLeft, titleCardDiv, choiceA, choiceB, choiceC, choiceD, currentAnswer;
 
 maxTime = 90;
+timeLeft = document.getElementById("timeRemaining");
+
+startDiv = document.getElementById("startingPage");
+questionDiv = document.getElementById("problems");
+
 choiceA = document.getElementById("buttonA");
 choiceB = document.getElementById("buttonB");
 choiceC = document.getElementById("buttonC");
 choiceD = document.getElementById("buttonD");
 
 // Start Quiz function and time the user
+function startQuiz(){
+    
+    timeLeft.textContent = maxTime; // Set time
 
+    // Close title card when user press start by disable starting page (Title page)
+    startDiv.style.display = "none";
+    // Display a container that holds one problem at a time
+    questionDiv.style.display = "block";
+
+    var startTimer = setInterval( function(){
+        maxTime--;
+        timeLeft.textContent = maxTime;
+        if (maxTime <= 0){
+            clearInterval(startTimer);
+            if (problemIndex < problems.length -1){
+                // End the game
+            }
+        }
+    }, 1000);
+
+
+};
 
 // Show the current question and choices on the screen
 
