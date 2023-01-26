@@ -204,7 +204,7 @@ function getScoreHistory(){
 // Quiz event
 
 // Click Start button
-startBTN.addEventListener("click", newQuiz);
+startBTN.addEventListener("click", startQuiz);
 
 // Click any buttons
 choiceA.addEventListener("click", clickA);
