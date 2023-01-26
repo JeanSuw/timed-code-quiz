@@ -4,7 +4,7 @@
 
 #timer {
     text-align: right;
-    font-size: 20px;
+    font-size: 50px;
 }
 
 .title-card{
@@ -40,7 +40,7 @@ p {
     background-color: rgb(105, 4, 105);
     color: white;
     padding: 15px 32px;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
     border-radius: 25px;
 }

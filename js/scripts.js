@@ -22,10 +22,11 @@ var correctCounts = 0, problemIndex = 0;
 
 // Reference Elements
 
-var maxTime, timeLeft, viewHighScoreDiv, startDiv, questionDiv, currentQuestion, startBTN, choiceA, choiceB, choiceC, choiceD, currentAnswer, highScoreRef, scoreSummary, finalScoreRef, groupList, initialInput;
+var maxTime, timeLeft, timesUp, viewHighScoreDiv, startDiv, questionDiv, currentQuestion, startBTN, choiceA, choiceB, choiceC, choiceD, currentAnswer, highScoreRef, scoreSummary, finalScoreRef, groupList, initialInput;
 
 maxTime = 90;
 timeLeft = document.getElementById("timeRemaining");
+timesUp = document.getElementById("stopTime");
 viewHighScoreDiv = document.getElementById("viewHighScoreLink");
 
 startDiv = document.getElementById("startingPage");
@@ -58,6 +59,7 @@ function startQuiz(){
 
     // Close title card when user press start by disable starting page (Title page)
     startDiv.style.display = "none";
+    timesUp.style.display = "none";
     // Display a container that holds one problem at a time
     questionDiv.style.display = "block";
 
@@ -133,6 +135,7 @@ function endGame(){
     startDiv.style.display = "none";
     // Get rid of questions and muliple choice page all together
     questionDiv.style.display = "none";
+    timesUp.style.display = "block";
     // Display the summary of the final score
     scoreSummary.style.display = "block";
 
@@ -150,6 +153,8 @@ function recordScores(event){
     }
     // Display the highscore
     startDiv.style.display = "none";
+    timeLeft.style.display = "none";
+    timesUp.style.display = "none";
     // block summary
     highScoreRef.style.display = "block";
 
@@ -185,6 +190,8 @@ function getScoreHistory(){
     // only highscoreref (Hall of fame)
     startDiv.style.display = "none";
     questionDiv.style.display = "none";
+    timeLeft.style.display = "none";
+    timesUp.style.display = "none";
     scoreSummary.style.display = "none";
     highScoreRef.style.display = "block";
 
