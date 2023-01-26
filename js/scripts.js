@@ -86,12 +86,12 @@ function nextProblem(){
 }
 
 // Check answers by showing if the user choose correct or incorrect answers
-function isCorrect(){
+function isCorrect(answerParam){
     currentAnswer.style.display = "block";
 
-    if (problems[problemIndex].answer === problems[problemIndex].choices[answer]){
+    if (problems[problemIndex].answer === problems[problemIndex].choices[answerParam]){
         // isCorrect, then add 5 points
-        currentAnswer.textContent = "Your answer (" + problems[problemIndex].choices[answer] + ") is Correct!";
+        currentAnswer.textContent = "Your answer (" + problems[problemIndex].choices[answerParam] + ") is Correct!";
     }else{
         // if not isCorrect, then subtract by 5 on the timer
         maxTime -= 5;
