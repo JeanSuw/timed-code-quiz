@@ -99,6 +99,7 @@ function isCorrect(answerParam){
     }else{
         // if not isCorrect, then subtract by 5 on the timer
         maxTime -= 5;
+        correctCounts = 0;
         timeLeft.textContent = maxTime;
         currentAnswer.textContent = "Wrong! Your time is deduct \n" + "The correct answer is " + problems[problemIndex].answer;
     }
@@ -162,9 +163,11 @@ function recordScores(event){
     // store User's scores to local storage
     var currentHighScore = localStorage.getItem("high scores");
     var scoreList;
+    console.log(scoreList);
     // if scoreList is empty 
-    if(scoreList === null){
+    if(scoreList === undefined){ // Need help
         //Set an empty array list 
+        console.log("It went here");
         scoreList = [];
     }else{
         // Get old saves
@@ -175,9 +178,10 @@ function recordScores(event){
         initials: initialInput.value,
         finalScore: finalScoreRef.textContent
     };
+    console.log(typeof userInfo);
     
     // Pushing object list to Scorelist
-    scoreList.push(userInfo);
+    scoreList.push(userInfo); // It does not let me push the object
 
     // stringify the input for local storage
     var stringScoreList = JSON.stringify(scoreList);
