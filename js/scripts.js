@@ -22,20 +22,30 @@ var correctCounts = 0, problemIndex = 0;
 
 // Reference Elements
 
-var maxTime, timeLeft, startDiv, questionDiv, currentQuestion, choiceA, choiceB, choiceC, choiceD, currentAnswer, initialInput;
+var maxTime, timeLeft, viewHighScoreDiv, startDiv, questionDiv, currentQuestion, startBTN, choiceA, choiceB, choiceC, choiceD, currentAnswer, highScoreRef, scoreSummary, finalScoreRef, groupList, initialInput;
 
 maxTime = 90;
 timeLeft = document.getElementById("timeRemaining");
+viewHighScoreDiv = document.getElementById("viewHighScoreLink");
 
 startDiv = document.getElementById("startingPage");
 questionDiv = document.getElementById("problems");
 currentQuestion = document.getElementById("currentQuestion");
 currentAnswer = document.getElementById("answerCheck");
 
+
+// List of HighScores and summary report
 highScoreRef = document.getElementById("highScoresSection");
+scoreSummary = document.getElementById("reportUserScore");
 finalScoreRef = document.getElementById("userScore");
+groupList = document.getElementById("listOfPeopleScores");
 initialInput = document.getElementById("userInitials");
 
+//buttons
+startBTN = document.getElementById("startButtonRef");
+submitNameBTN = document.getElementById("submitInitialButton");
+
+// multiple choice buttons references
 choiceA = document.getElementById("buttonA");
 choiceB = document.getElementById("buttonB");
 choiceC = document.getElementById("buttonC");
@@ -58,6 +68,7 @@ function startQuiz(){
             clearInterval(startTimer);
             if (problemIndex < problems.length-1){
                 // End the game
+                endGame();
             }
         }
     }, 1000);
@@ -94,6 +105,7 @@ function isCorrect(){
         nextProblem();
     }else{
         // end the game
+        endGame();
     }
 
 }
@@ -120,7 +132,10 @@ function endGame(){
     // Get rid of questions and muliple choice page all together
     questionDiv.style.display = "none";
     // Display the summary of the final score
+    scoreSummary.style.display = "block";
 
+    // add final score to finish the sentence "Your final score is ..."
+    finalScoreRef.textContent = correctCounts;
 }
 
 // Storing user's initial and highscore to local storage
@@ -161,18 +176,42 @@ function recordScores(event){
     window.localStorage.setItem("high scores", stringScoreList);
 
     // Show history
-
+    getScoreHistory();
 }
 
 function getScoreHistory(){
-    //
+    // only highscoreref (Hall of fame)
+    startDiv.style.display = "none";
+    questionDiv.style.display = "none";
+    scoreSummary.style.display = "none";
+    highScoreRef.style.display = "block";
 
-    // 
+    // Pull old history if any
+    var getOldScores = localStorage.getItem("high scores",);
+    if (getOldScores === null){
+        return;
+    }
 
-    //
+    var tempList = JSON.parse(getOldScores);
+
+    for (var i = 0; i <getOldScores.length; i++){
+        var newLine = document.createElement("p");
+        newLine.innerHTML = getOldScores[i].initials + ": " + getOldScores[i].finalScore;
+        groupList.appendChild(newLine);
+    }
 }
 
 // Quiz event
 
 // Click Start button
+startBTN.addEventListener("click", newQuiz);
+
 // Click any buttons
+choiceA.addEventListener("click", clickA);
+choiceB.addEventListener("click", clickB);
+choiceC.addEventListener("click", clickC);
+choiceD.addEventListener("click", clickD);
+
+submitNameBTN.addEventListener("click", function(event){recordScores(event)});
+
+viewHighScoreDiv.addEventListener("click", function(event){getScoreHistory(event)});
