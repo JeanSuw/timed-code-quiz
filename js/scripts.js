@@ -22,7 +22,7 @@ var correctCounts = 0, problemIndex = 0;
 
 // Reference Elements
 
-var maxTime, timeLeft, startDiv, questionDiv, currentQuestion, choiceA, choiceB, choiceC, choiceD, currentAnswer;
+var maxTime, timeLeft, startDiv, questionDiv, currentQuestion, choiceA, choiceB, choiceC, choiceD, currentAnswer, initialInput;
 
 maxTime = 90;
 timeLeft = document.getElementById("timeRemaining");
@@ -32,6 +32,9 @@ questionDiv = document.getElementById("problems");
 currentQuestion = document.getElementById("currentQuestion");
 currentAnswer = document.getElementById("answerCheck");
 
+highScoreRef = document.getElementById("highScoresSection");
+finalScoreRef = document.getElementById("userScore");
+initialInput = document.getElementById("userInitials");
 
 choiceA = document.getElementById("buttonA");
 choiceB = document.getElementById("buttonB");
@@ -41,6 +44,7 @@ choiceD = document.getElementById("buttonD");
 // Start Quiz function and time the user
 function startQuiz(){
     timeLeft.textContent = maxTime; // Set time
+    initialInput.textContent = ""; // Reset to empty string
 
     // Close title card when user press start by disable starting page (Title page)
     startDiv.style.display = "none";
@@ -116,18 +120,56 @@ function endGame(){
     // Get rid of questions and muliple choice page all together
     questionDiv.style.display = "none";
     // Display the summary of the final score
-    
+
 }
 
 // Storing user's initial and highscore to local storage
 function recordScores(event){
     event.preventDefault();
     // alert user when they did not add initials
-    
+    if (initialInput.value === ""){
+        alert("Don't forget to enter your initials!");
+        return;
+    }
     // Display the highscore
+    startDiv.style.display = "none";
+    // block summary
+    highScoreRef.style.display = "block";
 
+    // store User's scores to local storage
+    var currentHighScore = localStorage.getItem("high scores");
+    var scoreList;
+    // if scoreList is empty 
+    if(scoreList === null){
+        //Set an empty array list 
+        scoreList = [];
+    }else{
+        // Get old saves
+        scoreList = JSON.parse(currentHighScore);
+    }
 
+    var userInfo = {
+        initials: initialInput.value,
+        finalScore: finalScoreRef.textContent
+    };
+    
+    // Pushing object list to Scorelist
+    scoreList.push(userInfo);
 
+    // stringify the input for local storage
+    var stringScoreList = JSON.stringify(scoreList);
+    window.localStorage.setItem("high scores", stringScoreList);
+
+    // Show history
+
+}
+
+function getScoreHistory(){
+    //
+
+    // 
+
+    //
 }
 
 // Quiz event

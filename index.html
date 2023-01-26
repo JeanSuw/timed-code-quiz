@@ -47,11 +47,14 @@
         <div id="reportUserScore" style="display: none;">
             <h2>Your final score is <span id="userScore"></span></h2>
             <!-- Having user fill out the initials for their scores -->
-        
+            <p>Enter your intials (First.Last): <input type= "text" id = "userInitials"></p>
+            <button type="submit" id="submitInitialButton">Submit</button>
         </div>
         <!-- Show Lists of User's initials and Scores -->
-        <div>
 
+        <div id="highScoresSection" class = "scoreHistory" style="display: none;">
+            <h2>High Score</h2>
+            <div id = "listOfPeopleScores" class = "listScores"></div>
         </div>
         
     </div>
