@@ -212,6 +212,6 @@ choiceB.addEventListener("click", clickB);
 choiceC.addEventListener("click", clickC);
 choiceD.addEventListener("click", clickD);
 
-submitNameBTN.addEventListener("click", function(event){recordScores(event)});
+submitNameBTN.addEventListener("click", function(event){recordScores(event);});
 
-viewHighScoreDiv.addEventListener("click", function(event){getScoreHistory(event)});
+viewHighScoreDiv.addEventListener("click", function(event){getScoreHistory(event);});
