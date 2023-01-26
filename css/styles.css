@@ -28,4 +28,16 @@ p {
 
 #problems{
     text-align: center;
+    font-size: xx-large;
+}
+
+#buttonA,
+#buttonB,
+#buttonC,
+#buttonD{
+    background-color: green;
+    color: white;
+    padding: 15px 32px;
+    font-size: 20px;
+    cursor: pointer;
 }

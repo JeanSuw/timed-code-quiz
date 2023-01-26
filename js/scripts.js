@@ -92,6 +92,7 @@ function isCorrect(answerParam){
 
     if (problems[problemIndex].answer === problems[problemIndex].choices[answerParam]){
         // isCorrect, then add 5 points
+        correctCounts++;
         currentAnswer.textContent = "Your answer (" + problems[problemIndex].choices[answerParam] + ") is Correct!";
     }else{
         // if not isCorrect, then subtract by 5 on the timer
