@@ -74,6 +74,7 @@ function startQuiz(){
     }, 1000);
 
     // Present with the next question
+    nextProblem();
 };
 
 // Show the next question and choices on the screen
