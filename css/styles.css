@@ -44,3 +44,15 @@ p {
     cursor: pointer;
     border-radius: 25px;
 }
+
+#stopTime{
+    margin-top: 15%;
+    text-align: center;
+    font-size: 56px;
+}
+
+#reportUserScore{
+    margin-left: 39%;
+    font-size: x-large;
+    color: aquamarine;
+}

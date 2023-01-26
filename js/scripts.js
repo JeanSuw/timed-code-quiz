@@ -135,6 +135,7 @@ function endGame(){
     startDiv.style.display = "none";
     // Get rid of questions and muliple choice page all together
     questionDiv.style.display = "none";
+    timeLeft.style.display = "none";
     timesUp.style.display = "block";
     // Display the summary of the final score
     scoreSummary.style.display = "block";
