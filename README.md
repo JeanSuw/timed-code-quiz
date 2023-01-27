@@ -14,6 +14,7 @@ This app will run in the browser, and will feature dynamically updated HTML and 
 ## Useage
 Press start to begin the quiz. Click any choices. Once you are done with three questions, your final score will be shown to there.
 
+![Screenshot](./pic/Timed-Coding-Quiz-ScreenShot.png)
 
 ## Acknowledgement
 Without these tutorials and demonstrations, my website would be nonexistence.
