@@ -12,7 +12,7 @@ A coding assessments for interview process. It's a multiple choices type. For th
 This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code.
 
 ## Useage
-
+Press start to begin the quiz. Click any choices. Once you are done with three questions, your final score will be shown to there.
 
 
 ## Acknowledgement
@@ -26,7 +26,4 @@ Without these tutorials and demonstrations, my website would be nonexistence.
 * [CSS Buttons](https://www.w3schools.com/css/css3_buttons.asp)
 * [Style display Property](https://www.w3schools.com/jsref/prop_style_display.asp)
 * [HTML \<input\> Tag](https://www.w3schools.com/tags/tag_input.asp)
-* []()
-* []()
-* []()
-* []()
+* 26-Stu_Local_Storage-Todos

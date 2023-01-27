@@ -146,6 +146,7 @@ function endGame(){
 }
 
 var listCount = 0;
+var scoreList = [];
 // Storing user's initial and highscore to local storage
 function recordScores(event){
     event.preventDefault();
@@ -162,19 +163,8 @@ function recordScores(event){
     highScoreRef.style.display = "block";
 
     // store User's scores to local storage
-    //var currentHighScore = localStorage.getItem("high scores"); // object
-    var scoreList = []; // undefined
+    var scoreList = [];
     
-    // if scoreList is empty 
-    // if(scoreList === null){ // Need help
-    //     //Set an empty array list 
-    //     scoreList = [];
-    // }else{
-    //     // Get old saves (object)
-    //     scoreList = JSON.parse(currentHighScore);
-    // }
-
-    // scoreList = JSON.parse(currentHighScore);
     var userInfo = {
         initials: initialInput.value,
         finalScore:  finalScoreRef.textContent
@@ -185,24 +175,7 @@ function recordScores(event){
     listCount = scoreList.length;
     console.log("score list length: " + scoreList.length);
     console.log("From local "+  localStorage.getItem("high scores"));
-    // Pushing object list to Scorelist
-    // console.log(scoreList);
-    // console.log(userInfo.initials);
-    // console.log(userInfo.finalScore);
-
-    // scoreList.push(userInfo); // It does not let me push the object
-    // console.log(scoreList[0]);
-    // console.log(userInfo.length);
-
-    // // stringify the input for local storage
-    // var stringScoreList = JSON.stringify(scoreList[0]);
-    // console.log("lenght" + stringScoreList.length);
-    // //localStorage.setItem("high scores", stringScoreList);
-    // localStorage.setItem("high scores", scoreList[0]);
-    // console.log("From local "+localStorage.getItem("high scores"));
-    // Show history
-
-
+    
     getScoreHistory();
 }
 
@@ -215,13 +188,11 @@ function getScoreHistory(){
     scoreSummary.style.display = "none";
     highScoreRef.style.display = "block";
 
-    
-
     // Pull old history if any
     var getOldScores = localStorage.getItem("high scores");
     
     console.log(getOldScores);
-    console.log(getOldScores.length);
+    //console.log(getOldScores.length);
     
     var tempList1 = JSON.parse(getOldScores); 
     for (var i = 0; i < listCount; i++){
@@ -229,21 +200,16 @@ function getScoreHistory(){
         newLine.innerHTML = tempList1[i].initials + "  :  " + tempList1[i].finalScore;
         groupList.appendChild(newLine);
     }
-    // if (getOldScores === null){
-    //     return;
-    // }
-
-    // var tempList = JSON.parse(getOldScores); // Fix this later
-    // console.log(tempList + "Turns to object");
-    // console.log(tempList.initials);
-    // console.log(tempList.finalScore);
-    // var newLine = document.createElement("p");
-    // newLine.innerHTML = tempList[0].initials + ": " + tempList[0].finalScore; // Works because of index [0]
-    // groupList.appendChild(newLine);
-    // console.log(newLine);
-    // console.log(groupList);
-
 }
+
+function init() {
+    var storedScore = JSON.parse(localStorage.getItem("high scores"));
+    if (storedScore !== null) {
+        scoreList = storedScore;
+    }
+    getScoreHistory();
+}
+
 
 // Quiz event
 
@@ -258,4 +224,7 @@ choiceD.addEventListener("click", clickD);
 
 submitNameBTN.addEventListener("click", function(event){recordScores(event);});
 
-viewHighScoreDiv.addEventListener("click", function(event){getScoreHistory(event);});
+viewHighScoreDiv.addEventListener("click", function(event){
+    getScoreHistory(event);
+    init();
+});
