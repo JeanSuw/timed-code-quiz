@@ -157,36 +157,41 @@ function recordScores(event){
     startDiv.style.display = "none";
     timeLeft.style.display = "none";
     timesUp.style.display = "none";
-    // block summary
+    scoreSummary.style.display = "none";
     highScoreRef.style.display = "block";
 
     // store User's scores to local storage
-    var currentHighScore = localStorage.getItem("high scores");
-    var scoreList;
-    console.log(scoreList);
+    //var currentHighScore = localStorage.getItem("high scores"); // object
+    var scoreList = []; // undefined
+    
     // if scoreList is empty 
-    if(scoreList === undefined){ // Need help
-        //Set an empty array list 
-        console.log("It went here");
-        scoreList = [];
-    }else{
-        // Get old saves
-        scoreList = JSON.parse(currentHighScore);
-    }
+    // if(scoreList === null){ // Need help
+    //     //Set an empty array list 
+    //     scoreList = [];
+    // }else{
+    //     // Get old saves (object)
+    //     scoreList = JSON.parse(currentHighScore);
+    // }
 
+    // scoreList = JSON.parse(currentHighScore);
     var userInfo = {
         initials: initialInput.value,
-        finalScore: finalScoreRef.textContent
+        finalScore:  finalScoreRef.textContent
     };
-    console.log(typeof userInfo);
+    
     
     // Pushing object list to Scorelist
+    console.log(scoreList);
+    console.log(userInfo.initials);
+    console.log(userInfo.finalScore);
     scoreList.push(userInfo); // It does not let me push the object
+    console.log(scoreList[0]);
 
     // stringify the input for local storage
-    var stringScoreList = JSON.stringify(scoreList);
-    window.localStorage.setItem("high scores", stringScoreList);
-
+    var stringScoreList = JSON.stringify(scoreList[0]);
+    console.log(stringScoreList);
+    localStorage.setItem("high scores", stringScoreList);
+    console.log("From local "+localStorage.getItem("high scores"));
     // Show history
     getScoreHistory();
 }
@@ -201,12 +206,12 @@ function getScoreHistory(){
     highScoreRef.style.display = "block";
 
     // Pull old history if any
-    var getOldScores = localStorage.getItem("high scores",);
+    var getOldScores = localStorage.getItem("high scores");
     if (getOldScores === null){
         return;
     }
 
-    var tempList = JSON.parse(getOldScores);
+    var tempList = getOldScores;
 
     for (var i = 0; i <getOldScores.length; i++){
         var newLine = document.createElement("p");
